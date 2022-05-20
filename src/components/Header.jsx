@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Header = () => {
+const Header = (props) => {
+	const text = props.text;
+
 	return (
 		<HeaderWrap>
 			<PointWrapper>
@@ -8,7 +10,7 @@ const Header = () => {
 				<Point color="#cbb017" />
 				<Point color="#47cb17" />
 			</PointWrapper>
-			<h1>Meme Generator</h1>
+			<h1>{text.appTitle}</h1>
 		</HeaderWrap>
 	);
 };

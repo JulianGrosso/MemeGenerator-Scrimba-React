@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import styled from "styled-components";
 import memesData from "../assets/memesData";
+import { toPng } from "html-to-image";
 
-export const MemeGen = () => {
+export const MemeGen = (props) => {
+	const text = props.text;
+
 	const [meme, setMeme] = useState({
 		topText: "",
 		bottomText: "",
-		randomImage: "https://i.imgflip.com/1h7in3.jpg",
+		randomImage: "https://i.imgflip.com/26br.jpg",
 	});
 
 	const allMemeImages = memesData;
@@ -20,7 +23,7 @@ export const MemeGen = () => {
 		setMeme((prevMeme) => ({ ...prevMeme, randomImage: url }));
 	};
 
-	const handleChange = (e) => {
+	const handleTextChange = (e) => {
 		setMeme((prevMemeData) => {
 			return {
 				...prevMemeData,
@@ -29,9 +32,36 @@ export const MemeGen = () => {
 		});
 	};
 
+	const ref = useRef(null);
+
+	const dowloadImgPNG = useCallback(
+		(e) => {
+			e.preventDefault();
+
+			if (ref.current === null) {
+				return;
+			}
+
+			toPng(ref.current, {
+				cacheBust: true,
+				pixelRatio: 1.5,
+			})
+				.then((dataUrl) => {
+					const link = document.createElement("a");
+					link.download = "memegenerator.png";
+					link.href = dataUrl;
+					link.click();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
+		[ref]
+	);
+
 	return (
 		<FullContainer>
-			<ImgWrap>
+			<ImgWrap ref={ref}>
 				<MemeTopText>{meme.topText}</MemeTopText>
 				<MemeBottomText>{meme.bottomText}</MemeBottomText>
 				<MemeImg src={meme.randomImage} alt="Meme image" />
@@ -39,19 +69,20 @@ export const MemeGen = () => {
 			<MemeForm>
 				<InputText
 					type="text"
-					placeholder="Top text"
+					placeholder={text.inputTop}
 					name="topText"
-					onChange={handleChange}
+					onChange={handleTextChange}
 					value={meme.topText}
 				/>
 				<InputText
 					type="text"
-					placeholder="Bottom text"
+					placeholder={text.inputBottom}
 					name="bottomText"
-					onChange={handleChange}
+					onChange={handleTextChange}
 					value={meme.bottomText}
 				/>
-				<Button onClick={getMemeImage}>Change meme image</Button>
+				<Button onClick={getMemeImage}>{text.buttonChangeMeme}</Button>
+				<Button onClick={dowloadImgPNG}>{text.buttonDownload}</Button>
 			</MemeForm>
 		</FullContainer>
 	);
@@ -71,7 +102,7 @@ const FullContainer = styled.main`
 
 const MemeForm = styled.form`
 	display: grid;
-	grid-template: 40px 40px / 1fr 1fr;
+	grid-template: 40px 40px 40px / 1fr 1fr;
 	gap: 14px;
 `;
 
@@ -117,7 +148,7 @@ const Button = styled.button`
 `;
 
 const ImgWrap = styled.div`
-	height: 78%;
+	height: 72%;
 	width: auto;
 	display: flex;
 	justify-content: center;
@@ -131,7 +162,7 @@ const ImgWrap = styled.div`
 const MemeTopText = styled.h2`
 	position: absolute;
 	width: 100%;
-	top: 2%;
+	top: 1%;
 	margin: 0px 10px;
 
 	font-family: "Anton";
@@ -150,7 +181,7 @@ const MemeTopText = styled.h2`
 const MemeBottomText = styled.h2`
 	position: absolute;
 	width: 100%;
-	bottom: 2%;
+	bottom: 1%;
 	margin: 0px 10px;
 
 	font-family: "Anton";
