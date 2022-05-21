@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createGlobalStyle } from "styled-components";
+import backgroundImg from "../src/assets/background-01.jpg";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -20,7 +21,7 @@ body {
 	font-family: "Roboto", sans-serif;
 
 	background-color: #01031a;
-	background-image: url("./src/assets/background-01.jpg");
+	background-image: url(${backgroundImg});
 	background-position: 50% 0%;
 	background-attachment: fixed;
 	background-size: cover;
