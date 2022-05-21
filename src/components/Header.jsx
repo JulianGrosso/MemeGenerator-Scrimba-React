@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import flagARG from "../assets/flag-arg.png";
+import flagENG from "../assets/flag-eng.png";
 
 const Header = (props) => {
 	const text = props.text;
@@ -11,6 +13,13 @@ const Header = (props) => {
 				<Point color="#47cb17" />
 			</PointWrapper>
 			<h1>{text.appTitle}</h1>
+			<LangSelector onClick={props.changeLang}>
+				{props.translate ? (
+					<img src={flagARG} alt="Idioma Español" />
+				) : (
+					<img src={flagENG} alt="Language English" />
+				)}
+			</LangSelector>
 		</HeaderWrap>
 	);
 };
@@ -52,4 +61,17 @@ const Point = styled.div`
 	height: 12px;
 	background-color: ${(props) => props.color};
 	border-radius: 50%;
+`;
+
+const LangSelector = styled.a`
+	position: absolute;
+	right: 15px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	img {
+		width: 25px;
+		height: 25px;
+	}
 `;

@@ -1,24 +1,54 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "./components/Header";
 import { MemeGen } from "./components/MemeGen";
 
 function App() {
-	const textHeader = {
-		appTitle: "Meme Generator",
-	};
+	const [translate, setTranslate] = useState(
+		() => JSON.parse(localStorage.getItem("translate")) || true
+	);
 
-	const textMemeGen = {
-		inputTop: "Top text",
-		inputBottom: "Bottom text",
-		buttonChangeMeme: "Change meme image",
-		buttonDownload: "Download",
+	useEffect(() => {
+		localStorage.setItem("translate", JSON.stringify(translate));
+	}, [translate]);
+
+	const text = translate
+		? {
+				header: {
+					appTitle: "Generador de Memes",
+				},
+				memeGen: {
+					inputTop: "Texto superior",
+					inputBottom: "Texto Inferior",
+					buttonChangeMeme: "Cambiar Meme",
+					buttonDownload: "Descargar",
+				},
+		  }
+		: {
+				header: {
+					appTitle: "Meme Generator",
+				},
+				memeGen: {
+					inputTop: "Top text",
+					inputBottom: "Bottom text",
+					buttonChangeMeme: "Change meme image",
+					buttonDownload: "Download",
+				},
+		  };
+
+	const changeLang = () => {
+		setTranslate((prevTranslate) => !prevTranslate);
 	};
 
 	return (
 		<FullContainer>
 			<AppWrapper>
-				<Header text={textHeader} />
-				<MemeGen text={textMemeGen} />
+				<Header
+					text={text.header}
+					changeLang={changeLang}
+					translate={translate}
+				/>
+				<MemeGen text={text.memeGen} />
 			</AppWrapper>
 		</FullContainer>
 	);
