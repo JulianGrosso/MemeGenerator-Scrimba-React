@@ -62,6 +62,10 @@ const FullContainer = styled.main`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	@media screen and (max-width: 375px) {
+		height: 100vh;
+	}
 `;
 
 const AppWrapper = styled.div`
@@ -74,4 +78,12 @@ const AppWrapper = styled.div`
 	background-color: rgba(0, 160, 160, 0.15);
 	backdrop-filter: blur(4px);
 	margin: 20px;
+
+	@media screen and (max-width: 375px) {
+		min-width: 45%;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border-radius: 0px;
+	}
 `;

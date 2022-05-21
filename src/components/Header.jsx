@@ -45,6 +45,10 @@ const HeaderWrap = styled.div`
 		font-size: 18px;
 		user-select: none;
 	}
+
+	@media screen and (max-width: 375px) {
+		border-radius: 0;
+	}
 `;
 
 const PointWrapper = styled.div`
@@ -54,6 +58,10 @@ const PointWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+
+	@media screen and (max-width: 375px) {
+		display: none;
+	}
 `;
 
 const Point = styled.div`
@@ -73,5 +81,11 @@ const LangSelector = styled.a`
 	img {
 		width: 25px;
 		height: 25px;
+	}
+
+	@media screen and (max-width: 375px) {
+		right: 8px;
+
+		-webkit-tap-highlight-color: transparent;
 	}
 `;
