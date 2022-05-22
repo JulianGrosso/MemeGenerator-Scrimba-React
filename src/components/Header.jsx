@@ -78,9 +78,11 @@ const LangSelector = styled.a`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	img {
 		width: 25px;
 		height: 25px;
+		user-select: none;
 	}
 
 	@media screen and (max-width: 600px) {
