@@ -46,7 +46,7 @@ const HeaderWrap = styled.div`
 		user-select: none;
 	}
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		border-radius: 0;
 	}
 `;
@@ -59,7 +59,7 @@ const PointWrapper = styled.div`
 	flex-direction: row;
 	gap: 10px;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		display: none;
 	}
 `;
@@ -83,7 +83,7 @@ const LangSelector = styled.a`
 		height: 25px;
 	}
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		right: 8px;
 
 		-webkit-tap-highlight-color: transparent;

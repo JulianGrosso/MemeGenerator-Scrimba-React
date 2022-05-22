@@ -99,7 +99,7 @@ const FullContainer = styled.main`
 	margin-top: -50px;
 	padding: 50px 0px 0px 0px;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		justify-content: space-evenly;
 		padding: 70px 0px 100px 0px;
 	}
@@ -110,7 +110,7 @@ const MemeForm = styled.form`
 	grid-template: 40px 40px 40px / 1fr 1fr;
 	gap: 14px;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		grid-template: 40px 40px 40px 40px / 320px;
 		gap: 15px;
 	}
@@ -139,7 +139,7 @@ const InputText = styled.input`
 		font-size: 0.9rem;
 	}
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		text-align: center;
 
 		&::placeholder {
@@ -176,7 +176,7 @@ const ImgWrap = styled.div`
 	user-select: none;
 	margin: 0px 20px;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		width: auto;
 		max-width: 320px;
 		height: auto;
@@ -208,7 +208,7 @@ const MemeTopText = styled.h2`
 		-2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
 		2px 2px 5px #000;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		font-size: 26px;
 	}
 `;
@@ -231,7 +231,7 @@ const MemeBottomText = styled.h2`
 		-2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
 		2px 2px 5px #000;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		font-size: 26px;
 	}
 `;

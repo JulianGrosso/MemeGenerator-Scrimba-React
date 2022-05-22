@@ -63,7 +63,7 @@ const FullContainer = styled.main`
 	justify-content: center;
 	align-items: center;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		height: 100vh;
 	}
 `;
@@ -79,7 +79,7 @@ const AppWrapper = styled.div`
 	backdrop-filter: blur(4px);
 	margin: 20px;
 
-	@media screen and (max-width: 375px) {
+	@media screen and (max-width: 600px) {
 		min-width: 45%;
 		width: 100%;
 		height: 100%;
